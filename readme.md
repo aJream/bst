@@ -174,7 +174,7 @@ if __name__ == '__main__':
 
 ## 使用pyqt5做一个GUI操作界面
 
-代码下载
+[▶代码下载](https://gitcode.net/ajream/bst)
 
 需要安装的库
 
@@ -194,3 +194,4 @@ numpy                             1.19.0
 > python main.py
 ```
 
+![image-20230307172231837](https://gitcode.net/ajream/myimages/-/raw/master/pictures/2023/03/7_17_22_35_image-20230307172231837.png)
