@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>536</width>
-    <height>783</height>
+    <width>1086</width>
+    <height>493</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -100,11 +100,17 @@ color: #ccc;</string>
   <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>480</y>
-     <width>471</width>
-     <height>281</height>
+     <x>510</x>
+     <y>30</y>
+     <width>551</width>
+     <height>411</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>500</width>
+     <height>0</height>
+    </size>
    </property>
    <property name="widgetResizable">
     <bool>true</bool>
@@ -114,23 +120,23 @@ color: #ccc;</string>
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1000</width>
-      <height>1000</height>
+      <width>920</width>
+      <height>980</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>1000</width>
-      <height>1000</height>
+      <width>920</width>
+      <height>980</height>
      </size>
     </property>
     <widget class="QLabel" name="outImgLabel">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>10</y>
-       <width>800</width>
-       <height>800</height>
+       <x>10</x>
+       <y>40</y>
+       <width>900</width>
+       <height>900</height>
       </rect>
      </property>
      <property name="layoutDirection">
@@ -154,20 +160,23 @@ color: #ccc;</string>
       <bool>false</bool>
      </property>
     </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>转换结果</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
    </widget>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>450</y>
-     <width>101</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>转换结果</string>
-   </property>
   </widget>
   <widget class="QLineEdit" name="lineEditFilePath">
    <property name="geometry">

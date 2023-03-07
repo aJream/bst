@@ -18,7 +18,7 @@ class MyWidget(QtWidgets.QWidget, Ui_Form):
         self.filepath = None
 
     def btnInputClick(self):
-        self.filepath, filetype = QtWidgets.QFileDialog.getOpenFileName(
+        filepath, filetype = QtWidgets.QFileDialog.getOpenFileName(
             self,  # 父窗口对象
             "选择一张图片",  # 窗口标题
             r"../resources",  # 自定义起始目录
@@ -26,9 +26,10 @@ class MyWidget(QtWidgets.QWidget, Ui_Form):
             # 选择类型过滤，过滤内容再括号中，如果要有多个过滤器的话，可以用 ;; 分割
             "文件类型(*.jpg;*.png;*.bmp;)"
         )
-        if not self.filepath:
+        if not filepath:
             self.logBrowser.append("-- 未选择图片，请重新选择")
             return
+        self.filepath = filepath
         self.lineEditFilePath.setText(self.filepath)
         self.logBrowser.append("-- 读取了一张图片")
 
@@ -51,6 +52,9 @@ class MyWidget(QtWidgets.QWidget, Ui_Form):
         self.rgbImgLabel.setPixmap(QtGui.QPixmap(qimg))
 
     def btnConvertClick(self):
+        if not isinstance(self.img, np.ndarray):
+            self.logBrowser.append("-- 请先输入一张图片")
+            return
         k = self.spinBoxK.value()
         outImg = bst.convertImg(self.img, k, f=False, useGray=False)
         imgShow = self.imgResize(outImg, self.outImgLabel)
