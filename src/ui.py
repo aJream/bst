@@ -17,54 +17,48 @@ class Ui_Form(object):
         Form.resize(1040, 550)
         Form.setWindowOpacity(1.0)
         Form.setStyleSheet("background-color: #222;\n"
-                           "color: #eee;")
+"color: #eee;")
         self.rgbImgLabel = QtWidgets.QLabel(Form)
         self.rgbImgLabel.setGeometry(QtCore.QRect(20, 70, 230, 230))
         self.rgbImgLabel.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.rgbImgLabel.setAutoFillBackground(False)
         self.rgbImgLabel.setStyleSheet("border: 1px solid #555;\n"
-                                       "background: #333;\n"
-                                       "color: #ccc;")
+"background: #333;\n"
+"color: #ccc;")
         self.rgbImgLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.rgbImgLabel.setWordWrap(False)
         self.rgbImgLabel.setObjectName("rgbImgLabel")
         self.logBrowser = QtWidgets.QTextBrowser(Form)
         self.logBrowser.setGeometry(QtCore.QRect(20, 370, 471, 161))
         self.logBrowser.setStyleSheet("background: #333;\n"
-                                      "color: #ccc;")
+"color: #ccc;")
         self.logBrowser.setObjectName("logBrowser")
         self.grayImgLabel = QtWidgets.QLabel(Form)
         self.grayImgLabel.setGeometry(QtCore.QRect(260, 70, 230, 230))
         self.grayImgLabel.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.grayImgLabel.setAutoFillBackground(False)
         self.grayImgLabel.setStyleSheet("border: 1px solid #555;\n"
-                                        "background: #333;\n"
-                                        "color: #ccc;")
+"background: #333;\n"
+"color: #ccc;")
         self.grayImgLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.grayImgLabel.setWordWrap(False)
         self.grayImgLabel.setObjectName("grayImgLabel")
         self.lineEditFilePath = QtWidgets.QLineEdit(Form)
         self.lineEditFilePath.setGeometry(QtCore.QRect(20, 30, 401, 31))
         self.lineEditFilePath.setStyleSheet("background: #333;\n"
-                                            "color: #eee;\n"
-                                            "border: 1px solid #666;")
+"color: #eee;\n"
+"border: 1px solid #666;")
         self.lineEditFilePath.setText("")
         self.lineEditFilePath.setObjectName("lineEditFilePath")
         self.btnInputFile = QtWidgets.QPushButton(Form)
         self.btnInputFile.setGeometry(QtCore.QRect(440, 30, 51, 31))
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.btnInputFile.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.btnInputFile.sizePolicy().hasHeightForWidth())
         self.btnInputFile.setSizePolicy(sizePolicy)
         self.btnInputFile.setStyleSheet("background: #333;")
         self.btnInputFile.setObjectName("btnInputFile")
-        self.btnConvert = QtWidgets.QPushButton(Form)
-        self.btnConvert.setGeometry(QtCore.QRect(320, 320, 61, 31))
-        self.btnConvert.setStyleSheet("background: #333;")
-        self.btnConvert.setObjectName("btnConvert")
         self.splitter = QtWidgets.QSplitter(Form)
         self.splitter.setGeometry(QtCore.QRect(30, 320, 191, 22))
         self.splitter.setOrientation(QtCore.Qt.Horizontal)
@@ -79,10 +73,21 @@ class Ui_Form(object):
         self.outImgView = QtWidgets.QGraphicsView(Form)
         self.outImgView.setGeometry(QtCore.QRect(510, 30, 500, 500))
         self.outImgView.setObjectName("outImgView")
+        self.splitter_2 = QtWidgets.QSplitter(Form)
+        self.splitter_2.setGeometry(QtCore.QRect(260, 320, 186, 28))
+        self.splitter_2.setOrientation(QtCore.Qt.Horizontal)
+        self.splitter_2.setObjectName("splitter_2")
+        self.btnConvert = QtWidgets.QPushButton(self.splitter_2)
+        self.btnConvert.setStyleSheet("background: #333;")
+        self.btnConvert.setObjectName("btnConvert")
+        self.btnSave = QtWidgets.QPushButton(self.splitter_2)
+        self.btnSave.setStyleSheet("background: #333;")
+        self.btnSave.setObjectName("btnSave")
 
         self.retranslateUi(Form)
         self.btnInputFile.clicked.connect(Form.btnInputClick)
         self.btnConvert.clicked.connect(Form.btnConvertClick)
+        self.btnSave.clicked.connect(Form.btnSaveClick)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -91,8 +96,8 @@ class Ui_Form(object):
         self.rgbImgLabel.setText(_translate("Form", "image"))
         self.logBrowser.setPlaceholderText(_translate("Form", "输出信息"))
         self.grayImgLabel.setText(_translate("Form", "image"))
-        self.lineEditFilePath.setPlaceholderText(
-            _translate("Form", "输入图像地址(jpg,png,...)"))
+        self.lineEditFilePath.setPlaceholderText(_translate("Form", "输入图像地址(jpg,png,...)"))
         self.btnInputFile.setText(_translate("Form", "浏览"))
-        self.btnConvert.setText(_translate("Form", "转换"))
         self.label.setText(_translate("Form", "bayer矩阵大小"))
+        self.btnConvert.setText(_translate("Form", "转换"))
+        self.btnSave.setText(_translate("Form", "保存"))

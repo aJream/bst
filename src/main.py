@@ -26,8 +26,9 @@ class MyWidget(QtWidgets.QWidget, Ui_Form):
 
         self.spinBoxK.stepBy = lambda steps: self.spinBoxK.setValue(
             self.spinBoxK.value() * (2 ** steps))  # 指数型步长
-        self.logBrowser.append("注意：建议图片大小不超过500*500，bayer不超过4，图片越大，bayer矩阵越大，转换耗时越长")
+        self.logBrowser.append('<span style="color: #8dcb31;">提示：建议图片大小不超过500*500，bayer不超过4，图片越大，bayer矩阵越大，转换耗时越长</span>')
         self.img = None
+        self.imgSave = None
         self.filepath = None
 
     def btnInputClick(self):
@@ -66,25 +67,32 @@ class MyWidget(QtWidgets.QWidget, Ui_Form):
 
     def btnConvertClick(self):
         if not isinstance(self.img, np.ndarray):
-            self.logBrowser.append("-- 请先输入一张图片")
+            self.logBrowser.append('<span style="color: red;">-- 错误：请先输入一张图片</span>')
             return
         k = self.spinBoxK.value()
         
         imgShow = bst.convertImg(self.img, k, f=False, useGray=False)
+        self.imgSave = imgShow
+
         qimgShow = QtGui.QImage(
             imgShow, imgShow.shape[1], imgShow.shape[0], imgShow.shape[1], QtGui.QImage.Format_Grayscale8)
         pixmap = QtGui.QPixmap(qimgShow)
         self.image_item.setPixmap(pixmap)
         self.outImgView.setSceneRect(QtCore.QRectF(pixmap.rect()))
+        self.logBrowser.append(
+            f"鼠标放在输出图片上可进行放大缩小\n")
 
+    def btnSaveClick(self):
+        if not isinstance(self.imgSave, np.ndarray):
+            self.logBrowser.append('<span style="color: red;">-- 错误：没有对图像进行转换</span>')
+            return
         filename = self.filepath.split('/')[-1].split('.')[0]
         filetype = self.filepath.split('/')[-1].split('.')[1]
         savepath = f"../out/b_{filename}.{filetype}"
-        if(cv2.imwrite(savepath, imgShow)):
+        if(cv2.imwrite(savepath, self.imgSave)):
             self.logBrowser.append(
-                f"转换{self.filepath}并保存成功，保存路径是：\n{savepath}")
-        self.logBrowser.append(
-            f"鼠标放在输出图片上可进行放大缩小\n================\n")
+                f"转换{self.filepath}并保存成功，保存路径是：\n{savepath}\n=================================================\n")
+
 
     def imgResize(self, img, imgLabel):
         labelW, labelH = imgLabel.width(), imgLabel.height()
@@ -105,7 +113,7 @@ class MyWidget(QtWidgets.QWidget, Ui_Form):
         # 检查鼠标是否在GraphicsView内
         if self.outImgView.rect().contains(pos):
             zoom_step = 1
-            scale = 1.1 ** self._zoom  # 设置放大缩小快慢
+            scale = 1.05 ** self._zoom  # 设置放大缩小快慢
 
             if event.angleDelta().y() > 0:
                 self._zoom += zoom_step
