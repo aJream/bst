@@ -24,8 +24,7 @@
 
 半色调技术实际是把一个像素点用一个矩阵块来表示，如果像素值比较大（越白），那么矩阵快白色部分就越多，如图所示：
 
-![image-20230307160532625](https://gitcode.net/ajream/myimages/-/raw/master/pictures/2023/03/7_16_5_36_image-20230307160532625.png)
-
+![image-20230308104334962](https://gitcode.net/ajream/myimages/-/raw/master/pictures/2023/03/8_10_43_39_image-20230308104334962.png)
 
 
 
@@ -194,4 +193,4 @@ numpy                             1.19.0
 > python main.py
 ```
 
-![image-20230307172231837](https://gitcode.net/ajream/myimages/-/raw/master/pictures/2023/03/7_17_22_35_image-20230307172231837.png)
+![image-20230308104334962](https://gitcode.net/ajream/myimages/-/raw/master/pictures/2023/03/8_10_43_39_image-20230308104334962.png)

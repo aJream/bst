@@ -14,72 +14,50 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1086, 493)
+        Form.resize(1040, 550)
         Form.setWindowOpacity(1.0)
         Form.setStyleSheet("background-color: #222;\n"
-"color: #eee;")
+                           "color: #eee;")
         self.rgbImgLabel = QtWidgets.QLabel(Form)
         self.rgbImgLabel.setGeometry(QtCore.QRect(20, 70, 230, 230))
         self.rgbImgLabel.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.rgbImgLabel.setAutoFillBackground(False)
         self.rgbImgLabel.setStyleSheet("border: 1px solid #555;\n"
-"background: #333;\n"
-"color: #ccc;")
+                                       "background: #333;\n"
+                                       "color: #ccc;")
         self.rgbImgLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.rgbImgLabel.setWordWrap(False)
         self.rgbImgLabel.setObjectName("rgbImgLabel")
         self.logBrowser = QtWidgets.QTextBrowser(Form)
-        self.logBrowser.setGeometry(QtCore.QRect(20, 370, 471, 71))
+        self.logBrowser.setGeometry(QtCore.QRect(20, 370, 471, 161))
         self.logBrowser.setStyleSheet("background: #333;\n"
-"color: #ccc;")
+                                      "color: #ccc;")
         self.logBrowser.setObjectName("logBrowser")
         self.grayImgLabel = QtWidgets.QLabel(Form)
         self.grayImgLabel.setGeometry(QtCore.QRect(260, 70, 230, 230))
         self.grayImgLabel.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.grayImgLabel.setAutoFillBackground(False)
         self.grayImgLabel.setStyleSheet("border: 1px solid #555;\n"
-"background: #333;\n"
-"color: #ccc;")
+                                        "background: #333;\n"
+                                        "color: #ccc;")
         self.grayImgLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.grayImgLabel.setWordWrap(False)
         self.grayImgLabel.setObjectName("grayImgLabel")
-        self.scrollArea = QtWidgets.QScrollArea(Form)
-        self.scrollArea.setGeometry(QtCore.QRect(510, 30, 551, 411))
-        self.scrollArea.setMinimumSize(QtCore.QSize(500, 0))
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setObjectName("scrollArea")
-        self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 920, 980))
-        self.scrollAreaWidgetContents.setMinimumSize(QtCore.QSize(920, 980))
-        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.outImgLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.outImgLabel.setGeometry(QtCore.QRect(10, 40, 900, 900))
-        self.outImgLabel.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.outImgLabel.setAutoFillBackground(False)
-        self.outImgLabel.setStyleSheet("border: 1px solid #555;\n"
-"background: #333;\n"
-"color: #ccc;")
-        self.outImgLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.outImgLabel.setWordWrap(False)
-        self.outImgLabel.setObjectName("outImgLabel")
-        self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_2.setGeometry(QtCore.QRect(10, 10, 101, 21))
-        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_2.setObjectName("label_2")
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.lineEditFilePath = QtWidgets.QLineEdit(Form)
         self.lineEditFilePath.setGeometry(QtCore.QRect(20, 30, 401, 31))
         self.lineEditFilePath.setStyleSheet("background: #333;\n"
-"color: #eee;\n"
-"border: 1px solid #666;")
+                                            "color: #eee;\n"
+                                            "border: 1px solid #666;")
         self.lineEditFilePath.setText("")
         self.lineEditFilePath.setObjectName("lineEditFilePath")
         self.btnInputFile = QtWidgets.QPushButton(Form)
         self.btnInputFile.setGeometry(QtCore.QRect(440, 30, 51, 31))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.btnInputFile.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.btnInputFile.sizePolicy().hasHeightForWidth())
         self.btnInputFile.setSizePolicy(sizePolicy)
         self.btnInputFile.setStyleSheet("background: #333;")
         self.btnInputFile.setObjectName("btnInputFile")
@@ -98,6 +76,9 @@ class Ui_Form(object):
         self.spinBoxK.setMaximum(16)
         self.spinBoxK.setProperty("value", 4)
         self.spinBoxK.setObjectName("spinBoxK")
+        self.outImgView = QtWidgets.QGraphicsView(Form)
+        self.outImgView.setGeometry(QtCore.QRect(510, 30, 500, 500))
+        self.outImgView.setObjectName("outImgView")
 
         self.retranslateUi(Form)
         self.btnInputFile.clicked.connect(Form.btnInputClick)
@@ -110,9 +91,8 @@ class Ui_Form(object):
         self.rgbImgLabel.setText(_translate("Form", "image"))
         self.logBrowser.setPlaceholderText(_translate("Form", "输出信息"))
         self.grayImgLabel.setText(_translate("Form", "image"))
-        self.outImgLabel.setText(_translate("Form", "image"))
-        self.label_2.setText(_translate("Form", "转换结果"))
-        self.lineEditFilePath.setPlaceholderText(_translate("Form", "输入图像地址(jpg,png,...)"))
+        self.lineEditFilePath.setPlaceholderText(
+            _translate("Form", "输入图像地址(jpg,png,...)"))
         self.btnInputFile.setText(_translate("Form", "浏览"))
         self.btnConvert.setText(_translate("Form", "转换"))
         self.label.setText(_translate("Form", "bayer矩阵大小"))
